@@ -18,7 +18,7 @@ services:
       - phpmyadmin
     restart: always
     ports:
-        - 80:80
+        - 1238:80
 
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
@@ -60,7 +60,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_healthcheck
     command: sh -c "/wait"
     environment:
-      - WAIT_HOSTS=mysql:3306, wordpress:80
+      - WAIT_HOSTS=mysql:3306, wordpress:1238
       - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
       - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
       - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
